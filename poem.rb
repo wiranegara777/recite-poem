@@ -22,8 +22,7 @@ class Poem
   # method to return poems
   def recite(number)
     # validate number
-    error_msg = validate_number(number)
-    raise error_msg unless error_msg.nil?
+    validate_number(number)
 
     # get lyrics in range number to last index
     i = @size - number
@@ -47,8 +46,7 @@ class Poem
   # method to return subjects
   def recite_subject(number)
     # validate number
-    error_msg = validate_number(number)
-    raise error_msg unless error_msg.nil?
+    validate_number(number)
 
     i = @size - number
     final_subjects = []
@@ -99,9 +97,7 @@ class Poem
   # method to validate input
   def validate_number(number)
     valid_number = number.class == Integer && number.positive? && number <= @size
-    return "invalid number, please input number with integer dataType in range 1 - #{@size}" unless valid_number
-
-    return nil
+    raise "invalid number, please input number with integer dataType in range 1 - #{@size}" unless valid_number
   end
 
 end
